@@ -39,12 +39,12 @@ myVariable = "someString";
 var num = 10;
 console.log(num); // prints 10;
 
-// let and const are preferable to use becasue the can be blocked scoped unlike var 
-// let also allows you to re-assign the variable const can't re-asign.
+// let and const are preferable to use because the can be blocked scoped unlike var 
+// let also allows you to re-assign the variable const can't re-assign.
 
 let lastName = 'Klumpp';
 console.log(`lastName: ${lastName}`); // prints Klumpp
-// re-asigning let
+// re-assigning let
 lastName = 'Tenholder';
 console.log(`lastName: ${lastName}`); // prints Tenholder
 
@@ -60,14 +60,14 @@ function size(x) {
 }    
 
 size(1) // prints 100;
-size(12) // prints 200 but dosen't throw an error because it can't refrence the other let num.
+size(12) // prints 200 but doesn't throw an error because it can't reference the other let num.
 
 // const can not be re-assigned
 
 const dog = 'Solomon';
 console.log(dog); // prints Solomon
 /* 
-dog = 'Barko'; // throws an error becasue dog has already be assigned to 'Solomon'.
+dog = 'Barko'; // throws an error because dog has already be assigned to 'Solomon'.
 */
 
 // 3. HOSTING
@@ -77,75 +77,4 @@ dog = 'Barko'; // throws an error becasue dog has already be assigned to 'Solomo
 
 console.log(cat); // prints undefined
 var cat = 'Teddy'; // declare the variable cat and initialize it.
-console.log(cat); // prints 'Teddy' becuase it's been initialized.
-
-//  DATATYPES!
-
-// 1. Number
-// can be decimicals, numbers and negative numbers.
-let x = 5; 
-console.log(x); // positive number example
-let y = 0.5;
-console.log(y); // decimical number exaple. can't start with .
-let z = -5;
-console.log(z); // negative num example.
-
-
-// 2. Strings
-// strings can be text or numbers but must be wrapped in either '' or ""
-let str1 = 'Hello';
-let str2 = "World";
-let strNum = '55' // not the same as a number
-console.log(str1 + ' ' + str2);
-
-// 3. Boolean
-// boolean is a logical data type that is either true or false, 
-// not wrapped in '' or ""
-let bool = true;
-if (1 < 2) {
-    console.log(true);
-} else {
-    console.log(false);
-};
-
-// 4. Array
-/* Array is a complex data type wrapped in brackets [ ] that can store multiple data
- * in one variable. Array's are index based that you can find data
- * using brackets. The first index is 0.
- * they are mutable ie can use built in functions to add or remove from
- * an array
- * .push(value) adds to the end of an array
- * .pop() removes from the end of an array
- * .unshift(value) adds to the front of an array
- * .shift() removes from the front of an array
-*/
-const arr = []; // array literal
-const arrStr = ['Hello', 'World', 'and', 'Jon']; // array of strings
-console.log('arrStr: ' + arrStr[3]); // prints Jon
-const arrNum = [1,2,3,4,5];
-console.log(arrNum[1] + arrNum[3]); // prints 6 (2+4)
-arrNum.push(6, 7, 8);
-console.log(arrNum) // prints [1,2,3,4,5,6,7,8];
-arrNum.pop() 
-console.log(arrNum) // prints [1,2,3,4,5,6,7];
-arrNum.unshift(0) 
-console.log(arrNum) // prints [0,1,2,3,4,5,6,7];
-arrNum.shift() 
-console.log(arrNum) // prints [1,2,3,4,5,6,7];
-
-// 5. Object
-/* Object is also a complex data type wrapped in curley braces { } that has a key / value properties.
- * Objects do not have indexes. You can use dot notation or bracket notation
- * to get values from the object
-*/
-
-const obj = {} // obejct literal
-const meals = {
-    breakfast: 'eggs',
-    lunch: ['sandwitch', 'chips', 'water'],
-    dinner: false
-}
-
-meals.snack = 'almonds';
-
-console.log(meals);
+console.log(cat); // prints 'Teddy' because it's been initialized.
