@@ -1,5 +1,6 @@
 /** While loop
  * creates a loop that runs as long as the condition is true.
+ * Good to use when you don't know when the loop is going to stop.
  * While loops has a stopping condition.
  * Without a stopping condition the loop would never end!
 */

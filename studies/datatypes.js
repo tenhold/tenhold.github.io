@@ -36,19 +36,19 @@ if (1 < 2) {
  * .unshift(value) adds to the front of an array
  * .shift() removes from the front of an array
 */
-const arr = []; // array literal
-const arrStr = ['Hello', 'World', 'and', 'Jon']; // array of strings
-console.log('arrStr: ' + arrStr[3]); // prints Jon
+const arr = [];                                     // array literal
+const arrStr = ['Hello', 'World', 'and', 'Jon'];    // array of strings
+console.log('arrStr: ' + arrStr[3]);                // prints Jon
 const arrNum = [1,2,3,4,5];
-console.log(arrNum[1] + arrNum[3]); // prints 6 (2+4)
+console.log(arrNum[1] + arrNum[3]);                 // prints 6 (2+4)
 arrNum.push(6, 7, 8);
-console.log(arrNum) // prints [1,2,3,4,5,6,7,8];
+console.log(arrNum)                                 // prints [1,2,3,4,5,6,7,8];
 arrNum.pop() 
-console.log(arrNum) // prints [1,2,3,4,5,6,7];
+console.log(arrNum)                                 // prints [1,2,3,4,5,6,7];
 arrNum.unshift(0) 
-console.log(arrNum) // prints [0,1,2,3,4,5,6,7];
+console.log(arrNum)                                 // prints [0,1,2,3,4,5,6,7];
 arrNum.shift() 
-console.log(arrNum) // prints [1,2,3,4,5,6,7];
+console.log(arrNum)                                 // prints [1,2,3,4,5,6,7];
 
 // 5. Object
 /** Object is also a complex data type wrapped in curley braces { } that has a key / value properties.
@@ -56,7 +56,7 @@ console.log(arrNum) // prints [1,2,3,4,5,6,7];
  * to get values from the object
 */
 
-const obj = {} // object literal
+const obj = {}                                      // object literal
 const meals = {
     breakfast: 'eggs',
     lunch: ['sandwich', 'chips', 'water'],
@@ -84,9 +84,9 @@ console.log(`My name is ${name}`);
 
 const n = null;
 
-console.log(2 + null); // prints 2 (2 + 0).
-console.log(null); // prints null 
-console.log(null === true); // prints false because null === false.
+console.log(2 + null);                      // prints 2 (2 + 0).
+console.log(null);                          // prints null 
+console.log(null === true);                 // prints false because null === false.
 
 // 8. NaN (Not a Number)
 // This is not an error but when you try and use math on something that isn't a number.
@@ -127,6 +127,7 @@ if (-10000 > -Infinity) {
  * Primitive values on the other hand are copied. So if we assign a new variable
  * to an already assigned variable and update it then it won't effect the original 
  * variable
+ * Primitive values also take up a set amount of memory
 */
 
 // example of copy

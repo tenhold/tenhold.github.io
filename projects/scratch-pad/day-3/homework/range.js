@@ -21,15 +21,36 @@
  *  b. you'll need a loop, which one is best?
  *  c. you'll wanna make use of the push() method of Array.
  */
+ 
+ // input: two numbers a start number and an end number
+ // output: array of all the numbers in order.
+
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+    // declare an array literal
+    // use a if / else if flow to decide if the start number is larger than the end number
+    let numArray = [];
+    if (start < end) {
+        // for loop that starts at the start num and ends a the end num
+        for (let i = start; i <= end; i++) {
+            numArray.push(i);
+        }
+      return numArray;  
+    } else if (start > end) {
+        // for loop that reverses and prints the numbers in reverse order
+        for (let i = start; i >= end; i--) {
+            numArray.push(i);
+        }
+      return numArray;
+    } else {
+        return 'please use numbers';
+    }
     // YOUR CODE GOES ABOVE HERE //
 }
 
+console.log(range(5, 10));
+console.log(range(5, 0));
+console.log(range('hello', 'world'));
 
 
 

@@ -22,19 +22,33 @@
 // input: string
 // output: string reveresed ie "hello" returns "olleh";
 // Using for in loop, looping through 
+// function reverseString(input) {
+//     // YOUR CODE GOES BELOW HERE //
+//   const inputRev = []; // creates an empy array to store the string
+//   for (let char in input) {
+//     inputRev.unshift(input[char]); // looping through the string and putting the letter in reverse order into the inputRev array
+//   }  
+//   return inputRev.join(''); // returning the array and joining it together to return a string.
+    
+    
+//     // YOUR CODE GOES ABOVE HERE //
+// }
+
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-  const inputRev = []; // creates an empy array to store the string
-  for (let char in input) {
-    inputRev.unshift(input[char]); // looping through the string and putting the letter in reverse order into the inputRev array
-  }  
+  const inputArr = []; // creates an empy array to store the string
+  const inputRev = [];
+  for (let i = 0; i < input.length; i++) {
+    inputArr.push(input[i]); // looping through the string and putting the letter in reverse order into the inputRev array
+  } 
+  for (let i = inputArr.length - 1; i >= 0; i--) {
+    inputRev.push(inputArr[i]);
+  }
   return inputRev.join(''); // returning the array and joining it together to return a string.
     
     
     // YOUR CODE GOES ABOVE HERE //
 }
-
-console.log(reverseString('hello'));
 
 
 
