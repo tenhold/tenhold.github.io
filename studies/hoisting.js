@@ -1,3 +1,4 @@
+
 /**
  *                                              HOSITING
  * 
@@ -5,10 +6,10 @@
  * to the top of the code at call time. This allows the devs to be able to use either a function
  * or a variable at any time with in the code. 
  * 
- * Variables:   Only hosist the declaration not the value
- * var:         can be called before it's assigned a value. If called it will return
+ * Variables:   Only hoist the declaration not the value
+ * var:         can be called before its assigned a value. If called it will return
  *              undefined.
- * let / cont:  both are hoisted but can't be called before assigment. Will throw
+ * let / cont:  both are hoisted but can't be called before assignment. Will throw
  *              a reference error.
  * 
  * Functions:   Hoist both the declaration and the assigned value if assigned with 
@@ -16,15 +17,17 @@
  *              the declaration is hoisted the code block is not. This functions
  *              similar to a variable. We will see examples below.
  * 
- * Temporal Dead Zone:  the engine actually goes through the code twice. onece  at
+ * Temporal Dead Zone:  the engine actually goes through the code twice. once  at
  *                      the creation phase, it'll take all the variables and functions
  *                      and store them in memory if it was declared with var it'll assign
  *                      it undefined but if if it was declared with let / const then it'll
- *                      still hoist it but have a speical mode temporal dead zone where
+ *                      still hoist it but have a special mode temporal dead zone where
  *                      they exist but you don't have access to them until declared.
  * 
- * JS Interpreter:  or engine. Basically a way for javascript to be convereted to 
- *                  machine understand that then is able to operate on the machine.
+ * JS Interpreter:  or engine. Basically a way for javascript to be converted to 
+ *                  machine understand that then is able to operate on the machine. It is
+ *                  required for your computer to understand what you are trying to do.
+ *                  Converts high-level source code into low-level machine code.
 */
 
 
@@ -38,7 +41,7 @@ var anyoneThere = 'nope';
 // let / const hoisting
 
 // console.log(seeMe); // will give a reference error. it is still hoisted
-                       // but not accessable until after declaration
+                       // but not accessible until after declaration
 
 
 let seeMe = false;
@@ -65,3 +68,4 @@ const add3 = function(num1, num2, num3) {
 }
 
 add3(3, 3, 2); // will print 8 
+
