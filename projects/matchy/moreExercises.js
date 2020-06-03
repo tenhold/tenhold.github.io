@@ -45,9 +45,21 @@ var data = { results: [
 
   // Use the .length property to console.log the length of the results
   // array.
-
+    
+  console.log(data.results.length);
+    
   // Imagine you want are making a search results page,
   // (console.log) all of the animal names in order.
+  
+  // for (let i = 0; i < data.results.length; i++) {
+  //   let animalSplit = [];
+  //   // animalSplit.push(data.results[i].animal);
+  //   // animalSplit.concat(data.results[i].animal);
+  //   animalSplit.push(data.results[i].animal);
+  //   let newAnimals = animalSplit.join(' ');
+  //   console.log(newAnimals)
+    
+  // }
 
   // Next, Capitalize the first letter of each name and put a label
   // Your end result should look like this:
@@ -57,7 +69,28 @@ var data = { results: [
   // Name: Human
   // Name: Fish
   // etc.
+  
+  let animalsArray = [];
+  
+  for (let i = 0; i < data.results.length; i++) {
+    animalsArray.push(data.results[i].animal);
+  }
+  
 
+  
+  // loop through the array using a for loop.
+  function capitalize(array) {
+    let animalName = [];
+    for (let i = 0; i < array.length; i++) {
+      // take the first index and toUpperCase and concatnate with the rest of the string splitting off the first index
+     let animalsCap = (array[i][0].toUpperCase() + array[i].split('').splice(1).join(''));
+     animalName.push(`name: ${animalsCap}`);
+    }
+    return animalName.join('\n');
+  }
+  
+  console.log(capitalize(animalsArray));
+  
   // Next, console.log the number of legs next to their name.
   // Your end result should look like this:
   // Name: Fox, Legs: 4
