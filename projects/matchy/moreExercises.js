@@ -51,16 +51,17 @@ var data = { results: [
   // Imagine you want are making a search results page,
   // (console.log) all of the animal names in order.
   
-  // for (let i = 0; i < data.results.length; i++) {
-  //   let animalSplit = [];
-  //   // animalSplit.push(data.results[i].animal);
-  //   // animalSplit.concat(data.results[i].animal);
-  //   animalSplit.push(data.results[i].animal);
-  //   let newAnimals = animalSplit.join(' ');
-  //   console.log(newAnimals)
+  // loop through the array.
+  let animalsArray = [];
+  for (let i = 0; i < data.results.length; i++) {
+    animalsArray.push(data.results[i].animal);
+  }
+  
+  const animalsSorted = animalsArray.sort();
+  console.log(animalsSorted);
+  
     
-  // }
-
+  
   // Next, Capitalize the first letter of each name and put a label
   // Your end result should look like this:
   // Name: Fox
@@ -69,13 +70,6 @@ var data = { results: [
   // Name: Human
   // Name: Fish
   // etc.
-  
-  let animalsArray = [];
-  
-  for (let i = 0; i < data.results.length; i++) {
-    animalsArray.push(data.results[i].animal);
-  }
-  
 
   
   // loop through the array using a for loop.
@@ -89,7 +83,7 @@ var data = { results: [
     return animalName.join('\n');
   }
   
-  console.log(capitalize(animalsArray));
+  console.log(capitalize(animalsSorted));
   
   // Next, console.log the number of legs next to their name.
   // Your end result should look like this:
@@ -102,6 +96,8 @@ var data = { results: [
   // Now, redo the steps in the previous one and 
   // take this data and add it to an array with nested objects. 
   // Your result should look like this:
+  
+     
   var results = [
   {Name: 'Fox', Legs: 4},
   {Name: 'Dog', Legs: 4},
@@ -109,10 +105,81 @@ var data = { results: [
   {Name: 'Human', Legs: 2},
   {Name: 'Fish', Legs: 0}
   ];
+  
+  function resultFunc(array) {
+    let newResults = [];
+    for (let i = 0; i < data.results.length; i++) {
+      let anmls = data.results[i].animal;
+      let capAnmls = anmls[0].toUpperCase() + anmls.split('').splice(1).join('');
+      let animalObj = {}
+      animalObj["Name"] = capAnmls;
+      animalObj["Legs"] = data.results[i].numberOfLegs;
+      newResults.push(animalObj);
+    }
+    return newResults;
+  }
+  
+  let animalResults = resultFunc(data);
+ 
+console.log('results', animalResults);
+  
+
+// a function that checks to see if an animal is in the results.  
+  
+function isAnimal(animal) {  
+  let animalLower = animal.toLowerCase();
+  for (let i = 0; i < animalResults.length; i++) {
+    let animalArray = animalResults[i]['Name'].toLowerCase().split(' ');
+    if (animalArray.includes(animalLower)) return true;
+  }
+  return false;
+}
+
+// console.log(isAnimal('Dog'))
+
 
   // For another search result, console.log the animals whose matches are 'fish'
-
   // Next, add it to an array called 'FishMatches'. 
   // Make each match an object with two properties 'name' and 'index'
   // Your end result should look like this:
   var fishMatches = [{name: 'dog', index: 2}, {name: 'whale', index:5}];
+
+
+  let fishMatch = [];
+  for (let i = 0; i < data.results.length; i++) {
+    if (data.results[i].matches.includes('fish')) {
+      // fishMatch.push(data.results[i].animal);
+      let fishObj = {
+        name: data.results[i].animal,
+        index: i
+      };
+      fishMatch.push(fishObj)
+    }
+  }
+  
+console.log('fish match') 
+console.log(fishMatch)
+  /**
+   * loop though the results and find matches if a name doesn't exist for the animal return an array of names
+   * I: an animal and a array
+   * O: all animals that don't match the fish
+   */
+   
+  function nonMatch(animal) {
+    let nonMatchAnimal = [];
+    for (let i = 0; i < data.results.length; i++) {
+      if (!data.results[i].matches.includes(animal) && data.results[i].animal !== animal) {
+        let animalObj = {
+          name: data.results[i].animal,
+          index: i
+        }
+        nonMatchAnimal.push(animalObj);
+      }
+    }
+    return nonMatchAnimal;
+  }
+  console.log('non fish match')
+  console.log(nonMatch('fish'))
+  
+  
+  
