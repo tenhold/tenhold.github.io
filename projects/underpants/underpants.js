@@ -671,24 +671,40 @@ _.some = function(collection, func) {
  
  
  
- _.reduce = function(array, func, seed) {
-    // if seed is not defined
-    if (seed === undefined) {
-        // set seed to the first element of the array
-        seed = array[0];
-    // loop over the array starting at index 1
-        for (let i = 1; i < array.length; i++) {
-            // for each loop set seed to the function with the params of seed, the element and index
-            seed = func(seed, array[i], i);
-        }
+//  _.reduce = function(array, func, seed) {
+//     // if seed is not defined
+//     if (seed === undefined) {
+//         // set seed to the first element of the array
+//         seed = array[0];
+//     // loop over the array starting at index 1
+//         for (let i = 1; i < array.length; i++) {
+//             // for each loop set seed to the function with the params of seed, the element and index
+//             seed = func(seed, array[i], i);
+//         }
+//     } else {
+//     // if seed is defined then loop over the array
+//         for (let i = 0; i < array.length; i++) {
+//         // set seed to be the function call with params of seed, element and index.
+//             seed = func(seed, array[i], i);
+//         }
+//     }
+//     return seed;
+// }
+
+_.reduce = function(array, func, seed) {
+    let previousResult;
+    if (seed !== undefined) {
+        previousResult = seed;
+        _.each(array, function(element, i, array) {
+            previousResult = func(previousResult, element, i, array);
+        });
     } else {
-    // if seed is defined then loop over the array
-        for (let i = 0; i < array.length; i++) {
-        // set seed to be the function call with params of seed, element and index.
-            seed = func(seed, array[i], i);
+        previousResult = array[0];
+        for (let i = 1; i < array.length; i++) {
+            previousResult = func(previousResult, array[i], i, array);
         }
     }
-    return seed;
+    return previousResult;
 }
  
 
