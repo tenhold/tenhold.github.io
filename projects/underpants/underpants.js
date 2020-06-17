@@ -25,6 +25,8 @@ _.identity = function(value) {
     return value;
 }
 
+
+
 /** _.typeOf
 * Arguments:
 *   1) Any value
@@ -106,7 +108,7 @@ _.first = function(array, number) {
     return returnArray.slice(0, number);
 }
 
-// console.log(_.first(['hello',3,4], 1));
+console.log(_.first(['hello',3,4]));
 
 /** _.last
 * Arguments:
@@ -148,6 +150,7 @@ _.last = function(array, number) {
     
 }   
 
+// console.log(_.last([1,3,5], 'he'));
 
 /** _.indexOf
 * Arguments:
@@ -331,6 +334,10 @@ _.filter = function(array, func) {
     return filtered;
 }
 
+//  let odd = _.filter([1,2,3,4,5], function(e) {return e + 1})
+
+
+
 
 // _.filter = function(array, func) {
 //   return _.each(array, func);
@@ -377,6 +384,8 @@ console.log(_.reject([1,2,3,4,5], function(e){return e%2 === 0})); // -> [1,3,5]
  console.log(_.reject(inputData, function(e,i,a){
         return typeof e === "string" || i < a.length/2;
     })) //, [2,4], "Should reject elements in an array.");
+
+console.log('rej', _.reject([1,2,3,4,5], function(e) {return e % 2 === 1}));
 
 
 /** _.partition
@@ -561,6 +570,8 @@ _.every = function(collection, func) {
 */
 
 
+
+
 /**
  * collection and a function
  * call function for every element of collection with 
@@ -613,6 +624,12 @@ _.some = function(collection, func) {
     }
     return false;
 }
+
+let addOne = _.some([[], 2], function(e) {
+    return e + 1;
+});
+
+// console.log('add', addOne);
 
 // _.some = function(collection, func) {
 //     // declare a variable test and set it to false
@@ -733,6 +750,19 @@ _.reduce = function(array, func, seed) {
  _.extend = function(object1, object2, ...object) {
     return Object.assign(object1, object2, ...object);
  }
+ 
+//  _.extend = function(obj1, ...objects) {
+//      // use each to iterate over other objects
+//      _.each(objects, function(e, i, a) {
+//          // the element is going to be each object in the array
+//          for(let key in e) {
+//              // add the key/val pair to obj1
+//              obj1[key] = e[key];
+//          }
+//      });
+//      // output: updated object
+//      return obj1;
+//  }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

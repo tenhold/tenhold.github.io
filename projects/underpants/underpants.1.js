@@ -368,6 +368,23 @@ _.partition = function(array, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+/**
+ * 
+ */
+
+_.map = function(collection, func) {
+    const newArray = [];
+    if (_.typeOf(collection) === 'array') {
+         _.each(collection, function(element, i, array) {     
+            newArray.push(func(element, i, array));
+        });
+    } else if (_.typeOf(collection) === 'object') {
+         _.each(collection, function(val, key, collection) {
+            newArray.push(func(val, key, collection));
+        });
+    }
+    return newArray;
+}
 
 
 
@@ -386,6 +403,12 @@ _.partition = function(array, func) {
  * I: an array of objects and a prop
  * O: return an array containing the value of prop for every elecment in array 
  */
+ 
+ _.pluck = function(array, prop) {
+     return _.map(array, function(element, i, array) {
+      return element[prop];
+     });
+ }
 
  
  
@@ -411,6 +434,28 @@ _.partition = function(array, func) {
 */
 
 
+_.every = function(collection, func) {
+    let test = true;
+    // if a function is not provided then check to see if all values are truthy;
+    if (func === undefined) {
+        for (let i = 0; i < collection.length; i++) {
+            if (collection[i]) test = true;
+            else return false;
+        }       
+    } else if (_.typeOf(collection) === 'array') {
+         _.each(collection, function(element, i, collection) {
+          return func(element, i, collection) ? true : test = false;
+            // if (func(element, i, collection)) test = true;
+            // else return false;
+        });
+    } else if (_.typeOf(collection) === 'object') {
+         _.each(collection, function(key, val, collection) {
+            return func(key, val, collection) ?  true : test = false;
+        })
+    }
+    return test;
+}
+
 
 /** _.some
 * Arguments:
@@ -433,6 +478,24 @@ _.partition = function(array, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func) {
+    let test = false;
+    if (func === undefined) {
+        for (let i = 0; i < collection.length; i++) {
+            if (collection[i]) return true;
+            else test = false;
+        }
+    } else if (_.typeOf(collection) === 'array') {
+        _.each(collection, function(element, i, collection) {
+            if (func(element, i, collection)) test = true;
+        });
+    } else if (_.typeOf(collection) === 'object') {
+        _.each(collection, function(key, val, collection) {
+            if (func(key, val, collection)) test = true;
+        });
+    }
+    return test;
+}
 
 
 /** _.reduce
@@ -455,6 +518,24 @@ _.partition = function(array, func) {
 */
 
 
+_.reduce = function(array, func, seed) {
+    let prevResult;
+    // if the seed does not exist then set the seed the the first object in the array
+    if (seed === undefined) {
+        // if no seed is given then used the first index and continue on
+        prevResult = array[0];
+        for (let i = 1; i < array.length; i++) {
+            prevResult = func(prevResult, array[i], i, array);
+        }
+    } else {
+        prevResult = seed;
+        _.each(array, function(element, i, array) {
+           prevResult = func(prevResult, element, i, array); 
+        });
+    }
+    return prevResult;
+}
+
 
 
 
@@ -475,7 +556,9 @@ _.partition = function(array, func) {
 */
 
 
-
+_.extend = function(obj1, ...objects) {
+    return Object.assign(obj1, ...objects)
+}
  
  
  
