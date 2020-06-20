@@ -9,11 +9,33 @@ console.log(z); // negative num example.
 
 
 // 2. Strings
-// strings can be text or numbers but must be wrapped in either '' or ""
+/**
+ * strings can be text or numbers but must be wrapped in either '' or ""
+ * Strings are primitive data types, meaning that they are immutable. 
+ * Once a variable has been assigned to a string then if you if try and
+ * reference that variable and change it then the original reference will 
+ * stay the same.
+ * 
+ * There are however still methods to manipulate strings.
+ * Strings have 'indexes' and you can find a character at in the string the
+ * same way you would an array by using bracket notation.
+ * .length can also be used to find out how long the string is.
+ * .slice(start, end) is a method to cut off some parts of the string. You
+ * have a start point and an end point. 
+ * .charAt(num) is a method that will return whatever characer is at that 
+ * index point in the string.
+ * .toUpperCase() will capitalize all the characters in the string
+ * .toLowerCase() will lowercase all the characters in the string. Both are 
+ * good for when you are trying to compair values but your not sure on the case
+ * of each letter
+ * .trim() will take the spaces off both the front and back of the string.
+ * 
+ */
 let str1 = 'Hello';
 let str2 = "World";
 let strNum = '55' // not the same as a number
 console.log(str1 + ' ' + str2);
+console.log(str1[0]) // prints H
 
 // 3. Boolean
 // boolean is a logical data type that is either true or false, 
@@ -64,6 +86,7 @@ const meals = {
 }
 
 meals.snack = 'almonds';
+meals['lunch'].push('coffee'); // adds coffee to the end of the array of the lunch key
 
 console.log(meals);
 

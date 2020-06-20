@@ -8,6 +8,11 @@
  * Function parameters are used at the initialization phase. 
  * Arguments are used when we call the function and take the place of the 
  * parameters
+ * Any time you are declaring a function you supply it was parameters. Which are
+ * placeholders that are used to let us know when we are actually declaring the
+ * function what the supplied arguments should be. 
+ * Arguments are used when we have actual data that we need to run through the
+ * function.
 */
 
 function print() {
@@ -21,7 +26,7 @@ print(); // function call, or executing it, to print 'Hello World'
 * I: inputs (what's being passed into the function)
 * O: outputs (what should the function return);
 * C: constraints (any instructions on how the function was built)
-* E: edge case (what conditions do I have to meet to get the correct output)
+* E: edge case (what conditions do I have to meet to get the correct output)    
 */
 
 // I: two numbers
@@ -29,11 +34,12 @@ print(); // function call, or executing it, to print 'Hello World'
 // C: N/A
 // E: can be strings but won't get the desired output.
 
-function add(x, y) {
-    return x += y;
+// this is a function declaration 
+function add(x, y) { // this declaration takes 2 parameters 
+    return x += y;   // parameters are used a reference points for our args later
 }
-const four = add(2,2); // assigning a function to a variable.
-console.log(four);
+const four = add(2,2); // assigning a function to a variable and adding two arguments 
+console.log(four);     // both the number two 
 
 const multi = (x,y) => x *= y; // shortened function using arrow function and removing
 // the return because it's on the same line.

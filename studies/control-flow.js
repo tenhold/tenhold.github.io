@@ -9,6 +9,10 @@
  * flow would be... 
  * if (condition) { code to run } /if false then/ else if (another condition) { code }
  * /if false then/ else { code to run };
+ * 
+ * The first statement that resolves to true will be the line that is executed. If there was 
+ * another else if statement later in the chain then that would never be found because the chain 
+ * had already reached the first true and executed.
 */
 
 const hungry = true;
@@ -24,6 +28,10 @@ if (!hungry) { // condition would be false hungry === false
   * similar to if / else if statement it evaluates an expression and matches it to 
   * a case and runs the code.
   * Must have a break or the code will keep running until it finds a break.
+  * 
+  * A switch statement is good for when you have one piece of data that you want to replace.
+  * If you want to do any sort of complicated logic then a if / else statement would be a better
+  * use case
  */
  
  const glass = 'half full';

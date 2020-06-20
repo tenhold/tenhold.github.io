@@ -186,29 +186,29 @@ console.log(arrayToList(arr));
  * O: array of the value keys!
  */
 
-function listToArray(object) {
-  // create an array literal to store the values
-  let array = [];
-  // use a for loop where i is the object, it stops when it reaches null, and i moves to the next obeject at the rest position.
-  for (let i = object; i; i = i.rest) {
-    // each time push the i key of value into the array.
-    array.push(i.value);
-  }
-  // return the array
-  return array;
-}
-
 // function listToArray(object) {
-//   // base case:
-//   // when the rest value is null
-//   if (object.rest === null) {
-//     return [object.value];
+//   // create an array literal to store the values
+//   let array = [];
+//   // use a for loop where i is the object, it stops when it reaches null, and i moves to the next obeject at the rest position.
+//   for (let i = object; i; i = i.rest) {
+//     // each time push the i key of value into the array.
+//     array.push(i.value);
 //   }
-  
-//   // recursion case:
-//   // push the first object key into the array and return the object without the first key use delete?
-//   return [  object.value].concat(listToArray(object.rest));
+//   // return the array
+//   return array;
 // }
+
+function listToArray(object) {
+  // base case:
+  // when the rest value is null
+  if (object.rest === null) {
+    return [object.value];
+  }
+  
+  // recursion case:
+  // push the first object key into the array and return the object without the first key use delete?
+  return [object.value].concat(listToArray(object.rest));
+}
 
  let objTree = {
   value: 3,
@@ -262,16 +262,110 @@ console.log('prepend', prepend(1, numArr))
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
-
+/**
+ * I: array and a value
+ * O: the index that that value is in.
+ * E: if value isn't in the array return undefined 
+ */
+ 
+  
+function nth(collection, value) {
+  // base case;
+  // if the value collection length is 0 then return undefined
+  if (!collection) {
+    return undefined;
+    // if the value is 0 return the value of the collection
+  } else if (value === 0) {
+    return collection.value;
+  }
+  // recursive case
+  // count down the value for each iteration
+  return nth(collection.rest, value - 1);
 }
+ 
+ 
+console.log(nth([1,2,3], 2)); 
+
+ let objTree2 = {
+  value: 3,
+    rest: {
+    value: 2,
+      rest: {
+        value: 1,
+          rest: null
+      }
+   }
+  };
+ 
+ 
+// function nth(collection, value) {
+//   // base case:
+//   // if array.length is 0 then return undefined 
+//   if (collection.length - 1 === value) {
+//     return collection[0];
+//   } else if (value === 0) {
+//     return undefined;
+//   } else if (collection[value] === value) {
+//     return collection[value];
+//   }
+  
+//   // recursive case
+//   if (Array.isArray(collection)) {
+//     return nth(collection, value - 1);
+//   } else {
+//     return nth(collection.rest);
+//   }
+// }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
-
+/**
+ * I: two values
+ * O: a boolean value
+ */
+function deepEqual(val1, val2) {
+  // check to see if either value is null and if both are return true
+  if (val1 === null && val2 === null) {
+    return 'true';
+  // check to see if both values are an array
+  } else if (Array.isArray(val1) && Array.isArray(val2)) {
+    return 'true';
+  // check to see if the values are both the same
+  } else if (val1 === val2) {
+    return true;
+  // check to see if they are both 'objects'
+  } else if (typeof val1 === 'object' && typeof val2 === 'object') {
+    // create a variable to store all the keys of the object in an array
+    let val1Keys = Object.keys(val1);
+    // create a variable to store all the keys of the object in an array
+    let val2Keys = Object.keys(val2);
+    // create a variable to store all the values of the obects in an array
+    let val1Vals = Object.values(val1);
+    // create a variable to store all the values of the obects in an array
+    let val2Vals = Object.values(val2);
+    // compair all the values of the keys
+    const compairKeys = val1Keys.every(function(key) {
+      return val2Keys.includes(key);
+    });
+    // compair all the values of the values
+    const compairVals = val1Vals.every(function(val) {
+      return val2Vals.includes(val);
+    });
+    // if both the values and keys are the same return true;
+    if (compairKeys && compairVals) {
+      return true;
+    };
+    
+    console.log(compairKeys);
+  }
+  
+  
+  
+  
+  return false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

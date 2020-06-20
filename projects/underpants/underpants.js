@@ -727,6 +727,43 @@ _.reduce = function(array, func, seed) {
 
 
 
+// const mapObjectReduce = (object, callback) => {
+//   // use reduce to run the object on each key value pair
+//   return _.reduce(object, function(acc, curVal) {
+//     callback(acc, acc[curVal], object);
+//     console.log(acc);
+//     return acc;
+//   }, {});
+// };
+
+const name = {name: 'Jon', last: 'tenholder'};
+function toUpper(str) {
+  return str.toUpperCase();
+}
+
+
+const mapObjectReduce = (object, callback) => {
+
+   let upper = _.reduce(object, (acc, curVal) => {
+        // console.log(callback(curVal));
+         if (!acc[curVal]) {
+            object[curVal] = callback(curVal, acc[curVal], object);
+         } else {
+        // console.log(acc)
+            acc = object[curVal];
+         }
+        return acc
+    }, {});
+  console.log(upper)
+    return upper;
+};
+
+
+console.log(mapObjectReduce(name, toUpper));
+
+
+
+
 /** _.extend
 * Arguments:
 *   1) An Object
