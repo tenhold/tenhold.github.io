@@ -6,6 +6,28 @@
 // O: an array of the numbers inbetween using the 3rd param as the step
 // E: if 3rd parm is negative then step down.
 
+
+
+
+// function range(start, end, step) {
+//   // base case:
+//   // when the start number is equal the the end number
+//   if (start > end || step < 0) {
+//     return [];
+//   }
+  
+//   // resursive case
+//   // keep the array of numbers and increae the start num by the step each time if step is undefined then increase by one
+//   if (step === undefined) {
+//     return [start].concat(range(start + 1, end));
+//   }
+  
+//   return [start].concat(range(start + step, end, step))
+// }
+
+// console.log('range', range(1, 5, 2));
+
+
 function range(start, end, step) {
   // declare an array to store the values from the params
   let rangeArr = [];
@@ -29,7 +51,6 @@ function range(start, end, step) {
   return rangeArr;
 }
 
-console.log('range', range(2,2));
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
@@ -41,22 +62,40 @@ console.log('range', range(2,2));
  * E: if it's an array literal return 0, 
  *    should also work with negative numbers
  */
+ 
+ 
+ 
+ function sum(array) {
+   // base case
+   // when the array length is 0
+   if (array.length === 0) {
+     return 0;
+   }
+   
+   // recursion case
+   // if the array is empty return 0
+   
+   return array[0] + sum(array.slice(1));
+ }
+ 
+ 
+ 
 
-function sum(array) {
- // declare a var to store the totals of the numbers
-  let sum = 0; 
-  // find out if the array has any values
-  if (array.length === 0) {
-    return 0;
-  } else {
-  // use a for loop to loop and add each value in the array
-    for (let i = 0; i < array.length; i++) {
-      // add the element to the sum each time it loops
-      sum += array[i];
-    }
-  }
-  return sum;
-}
+// function sum(array) {
+// // declare a var to store the totals of the numbers
+//   let sum = 0; 
+//   // find out if the array has any values
+//   if (array.length === 0) {
+//     return 0;
+//   } else {
+//   // use a for loop to loop and add each value in the array
+//     for (let i = 0; i < array.length; i++) {
+//       // add the element to the sum each time it loops
+//       sum += array[i];
+//     }
+//   }
+//   return sum;
+// }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArray ////////////////////////////////////////////////////////////////
@@ -69,22 +108,47 @@ function sum(array) {
  * E: if an array literal return array literal
  */
  
+ 
+ function reverseArray(array) {
+   // base case 
+   // when the array.length is 0.
+   if (!array.length) {
+     return [];
+   }
+   
+   // rescurstive case 
+   // unshift the array index in the new array.
+   return reverseArray(array.slice(1)).concat([array[0]]);
+ }
+ 
+ console.log(reverseArray([1,2,3]))
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
-function reverseArray(array) {
-  // decalare an array literal
-  let revArray = [];
-  // check to see if the array is empty
-  if (array.length === 0) {
-    return revArray;
-  } else {
-  // use a for loop starting at the end of the array and pushing the value into the new array.
-    for (let i = array.length - 1; i >= 0; i--) {
-      // each time push the element into the new array.
-      revArray.push(array[i]);
-    }
-  }
-  return revArray;
-}
+// function reverseArray(array) {
+//   // decalare an array literal
+//   let revArray = [];
+//   // check to see if the array is empty
+//   if (array.length === 0) {
+//     return revArray;
+//   } else {
+//   // use a for loop starting at the end of the array and pushing the value into the new array.
+//     for (let i = array.length - 1; i >= 0; i--) {
+//       // each time push the element into the new array.
+//       revArray.push(array[i]);
+//     }
+//   }
+//   return revArray;
+// }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
@@ -94,23 +158,46 @@ function reverseArray(array) {
  * Should reverse the array and not create a new array of the array reverested
  * I: array
  * O: same array reversed;
- */
+// */
+
+
 function reverseArrayInPlace(array) {
-  // decare a rev array that is referencing the array argument
-  // create a for loop set a var to be the start and a var to be the last position, looping condition is keep looping until i is equal to j
-  // i will go up one and j will go done one
-  for (let i = 0, j = array.length - 1; i < j; i++, j--) {
-    // create a variable to store the i element and set it to the element in the i position
-    let temp = array[i];
-    // set the element in the i position to the j element
-    array[i] = array[j];
-    // now put the j element into the temp storage which was the i position
-    array[j] = temp;
+  // use for loop to reverse the array
+  for (let i = array.length - 1; i >= 0; i--) {
+    array.push(array[i]);
   }
-  // return the array
+  for (let i = 0; i < array.length - 1 / 2; i++) {
+    array.shift();
+  }
   return array;
 }
-let nums = [1,2,3,4,5];
+
+console.log(reverseArrayInPlace([1,2,3,4]))
+
+
+
+
+
+
+
+
+
+// function reverseArrayInPlace(array) {
+//   // decare a rev array that is referencing the array argument
+//   // create a for loop set a var to be the start and a var to be the last position, looping condition is keep looping until i is equal to j
+//   // i will go up one and j will go done one
+//   for (let i = 0, j = array.length - 1; i < j; i++, j--) {
+//     // create a variable to store the i element and set it to the element in the i position
+//     let temp = array[i];
+//     // set the element in the i position to the j element
+//     array[i] = array[j];
+//     // now put the j element into the temp storage which was the i position
+//     array[j] = temp;
+//   }
+//   // return the array
+//   return array;
+// }
+// let nums = [1,2,3,4,5];
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -142,6 +229,32 @@ let nums = [1,2,3,4,5];
  * 
  */
 
+
+// function arrayToList(array) {
+//   let tree = {};
+//   // base case
+//   // when the array.length is 0
+//   if (!array.length) {
+//     return tree;
+//   }
+  
+//   // recursive case
+//   // assign the key with the first index of the array and the second key of rest to the rest of the array 
+//   tree.value = array[0];
+//   tree.rest = arrayToList(array.slice(1));
+//   if (array.length === 1) {
+//     tree.rest = null;
+//   }
+//   return tree;
+// }
+
+
+
+let arr = ['a', 'b', 'c'];
+console.log(arrayToList(arr));
+
+
+
 function arrayToList(array, tree = {}) {
   // base case: 
   // array.length is 0
@@ -159,8 +272,6 @@ function arrayToList(array, tree = {}) {
   return tree;
 }
 
-let arr = ['a', 'b', 'c'];
-console.log(arrayToList(arr));
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
@@ -185,18 +296,37 @@ console.log(arrayToList(arr));
  * I: object with a key called value: of an simple datatype, a value called rest: of an Object without the first element
  * O: array of the value keys!
  */
+ 
+
 
 // function listToArray(object) {
-//   // create an array literal to store the values
-//   let array = [];
-//   // use a for loop where i is the object, it stops when it reaches null, and i moves to the next obeject at the rest position.
-//   for (let i = object; i; i = i.rest) {
-//     // each time push the i key of value into the array.
-//     array.push(i.value);
+//   // base case: when rest = null
+//   if (object.rest === null) {
+//     return [object.value];
 //   }
-//   // return the array
-//   return array;
+//   // reusrsive case
+//   // to push the value in the array and reassign move to the next object
+//   return [object.value].concat(listToArray(Object.assign(object, object.rest)));
 // }
+
+
+let tree =   {
+    value: 3,
+      rest: {
+        value: 2,
+          rest: {
+            value: 1,
+               rest: null
+          }
+        }
+      }
+
+console.log(listToArray(tree));
+
+
+
+
+
 
 function listToArray(object) {
   // base case:
@@ -233,30 +363,72 @@ function listToArray(object) {
  * adds an element to the start of an array;
  * I: value, array
  * O: an array with the value a the front
+ * 
+ *  ex (1, [2,3] ====>>>>>   [1,2,3])
+ *  ex (1, 
+ * { 
+ *   value: 2,
+ *    rest: {
+        value: 3,
+        rest: null
+      }    
+    })
+  ====== equals =====          
+    {
+      value: 1,
+      rest: {
+        value: 2,
+        rest: {
+          value: 3,
+          rest: null
+        }
+      }
+    }
  */
 
+
+
+
 function prepend(value, collection) {
-  // put the value at the first index in the array and move all other indexes by one;
-  // create a new array with the first index at null push the array values into the new array starting at the 1st index
+  // base case
+  // if array length is 0 or rest is null
   if (Array.isArray(collection)) {
-    let newArr = [null];
-    for (let i = 0; i < collection.length; i++) {
-      newArr.push(collection[i]);
-    }
-    // reassign the first index to the value argument
-    newArr[0] = value;
-    // return the new array
-    return newArr;
-  // if the collection is an object
+    collection.unshift(value);
   } else {
-    // create a new object with the value of arguemnt value and rest as the collection return new object
     let newObj = {value: value, rest: collection};
     return newObj;
   }
 }
 
-let numArr = [3,4,5];
-console.log('prepend', prepend(1, numArr))
+
+
+
+
+
+
+
+// function prepend(value, collection) {
+//   // put the value at the first index in the array and move all other indexes by one;
+//   // create a new array with the first index at null push the array values into the new array starting at the 1st index
+//   if (Array.isArray(collection)) {
+//     let newArr = [null];
+//     for (let i = 0; i < collection.length; i++) {
+//       newArr.push(collection[i]);
+//     }
+//     // reassign the first index to the value argument
+//     newArr[0] = value;
+//     // return the new array
+//     return newArr;
+//   // if the collection is an object
+//   } else {
+//     // create a new object with the value of arguemnt value and rest as the collection return new object
+//     let newObj = {value: value, rest: collection};
+//     return newObj;
+//   }
+// }
+
+// let numArr = [3,4,5];
+// console.log('prepend', prepend(1, numArr))
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
@@ -268,6 +440,12 @@ console.log('prepend', prepend(1, numArr))
  * E: if value isn't in the array return undefined 
  */
  
+  
+  
+  
+  
+  
+  
   
 function nth(collection, value) {
   // base case;
@@ -325,17 +503,105 @@ console.log(nth([1,2,3], 2));
 /**
  * I: two values
  * O: a boolean value
- */
+*/
+
+// function deepEqual(val1, val2) {
+//   // base case when rest is null
+//   if (val1 === null && val2 === null) {
+//     return true;
+//   // check to see if both values are an array
+//   } else if (Array.isArray(val1) && Array.isArray(val2)) {
+//     return val1.every(value => {
+//       return val2.includes(value);
+//     })
+//   // check to see if the values are both the same
+//   } else if (val1 === val2) {
+//     return true;
+//   // check to see if they are both 'objects'
+//   } else if (typeof val1 === 'object' && typeof val2 === 'object') {
+//     const val1Keys = Object.keys(val1);
+//     const val2Keys = Object.keys(val2);
+//     const keyCheck = val1Keys.every(function(value) {
+//       return val2Keys.includes(value);
+//     })
+//     console.log(keyCheck);
+//   }
+//   return false;
+// };
+
+
+// function deepEqual(val1, val2) {
+//   // base case when rest is null
+//   if (val1 === null && val2 === null) {
+//     return true;
+//   // check to see if both values are an array
+//   } else if (Array.isArray(val1) && Array.isArray(val2)) {
+//     return val1.every(value => {
+//       return val2.includes(value);
+//     })
+//   // check to see if the values are both the same
+//   } else if (val1 === val2) {
+//     return true;
+//   // check to see if they are both 'objects'
+//   } else if (typeof val1 === 'object' && typeof val2 === 'object') {
+//     const val1List = listToArray(val1);
+//     const val2List = listToArray(val2);
+//     return val1List.every(value => {
+//       return val2List.includes(value);
+//     })
+//   }
+//   return false;
+// };
+
+// console.log(deepEqual)
+
+// function deepEqual(val1, val2) {
+//   // check to see if either value is null and if both are return true
+//   if (val1 === null && val2 === null) {
+//     return true;
+//   // check to see if both values are an array
+//   } else if (Array.isArray(val1) && Array.isArray(val2)) {
+//     val1.every(value => val2.includes(value));
+//   // check to see if the values are both the same
+//   } else if (val1 === val2) {
+//     return true;
+//   // check to see if they are both 'objects'
+//   } else if (typeof val1 === 'object' && typeof val2 === 'object') {
+//     // create a variable to store all the keys of the object in an array
+//     let val1Keys = Object.keys(val1);
+//     // create a variable to store all the keys of the object in an array
+//     let val2Keys = Object.keys(val2);
+//     // create a variable to store all the values of the obects in an array
+//     let val1Vals = Object.values(val1);
+//     // create a variable to store all the values of the obects in an array
+//     let val2Vals = Object.values(val2);
+//     // compair all the values of the keys
+//     const compairKeys = val1Keys.every(function(key) {
+//       return val2Keys.includes(key);
+//     });
+//     // compair all the values of the values
+//     const compairVals = val1Vals.every(function(val) {
+//       if (typeof val === 'object') {
+//         console.log(val);
+//       }
+//       return val2Vals.includes(val);
+//     });
+//     // if both the values and keys are the same return true;
+//     if (compairKeys && compairVals) {
+//       return true;
+//     };
+//   }
+//   return false;
+// };
+
 function deepEqual(val1, val2) {
   // check to see if either value is null and if both are return true
-  if (val1 === null && val2 === null) {
-    return 'true';
+  // check to see if the values are both the same
+  if (val1 === null && val2 === null || val1 === val2) {
+    return true;
   // check to see if both values are an array
   } else if (Array.isArray(val1) && Array.isArray(val2)) {
-    return 'true';
-  // check to see if the values are both the same
-  } else if (val1 === val2) {
-    return true;
+    val1.every(value => val2.includes(value));
   // check to see if they are both 'objects'
   } else if (typeof val1 === 'object' && typeof val2 === 'object') {
     // create a variable to store all the keys of the object in an array
@@ -346,27 +612,31 @@ function deepEqual(val1, val2) {
     let val1Vals = Object.values(val1);
     // create a variable to store all the values of the obects in an array
     let val2Vals = Object.values(val2);
-    // compair all the values of the keys
-    const compairKeys = val1Keys.every(function(key) {
-      return val2Keys.includes(key);
-    });
-    // compair all the values of the values
-    const compairVals = val1Vals.every(function(val) {
-      return val2Vals.includes(val);
-    });
-    // if both the values and keys are the same return true;
-    if (compairKeys && compairVals) {
+    // compare all the values of the keys
+    // base case when val1 and val2 length is 0
+    if (val1Keys.length !== val2Keys.length || val1Keys !== val2Keys) {
+      return false;
+    } else if (!val1Keys.length && !val2Keys) {
       return true;
-    };
-    
-    console.log(compairKeys);
+    }
+    // recursion case
+    // if val1 and val2 index is an array loop thought that array
+    if (Array.isArray(val1Vals[0]) && Array.isArray(val1Vals[0])) {
+      let val1Arr = val1Vals[0];
+      let val2Arr = val2Vals[0];
+      for (let i = 0; i < val1Arr.length && i < val2Arr.length; i++) {
+        if (val1Arr[i] !== val2Arr[i]) {
+          return false;
+        }
+      }
+      return deepEqual(val1.slice(1), val2.slice(1));
+    }
   }
-  
-  
-  
-  
   return false;
-}
+};
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////

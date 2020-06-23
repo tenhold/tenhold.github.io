@@ -86,40 +86,43 @@ var sumBelow = function(n) {
 // O: an array of numbers between the input numbers
 // E: should accept negative numbers and numbers that have a higner starting value.
 
-var range = function(x, y, resultArr = []) {
-  // base case: when do we want to stop
-  // if x is equal to y and x is equal to y - 1 or + 1 then return the array
-  if (x === y || x === y - 1 || x === y + 1) {
-    return resultArr;
-    // if x is equal to y and x is 
-  } 
-  // recursion case: call the function and push the value of x into the array adding one to x.
-  // run the loop if x > y 
-  if (x > y) {
-    // push x into the array subtracting one
-    resultArr.push(x - 1);
-    // return the range function with the arguements subtacting one from x, y and the array.
-    return range(x - 1, y, resultArr);
-  } else {
-    // if y is larger than x then we are going to add x plus one to the array.
-    resultArr.push(x + 1);  
-    // returning the range function calling x + 1, y and the array.
-    return range(x + 1, y, resultArr);
-  }
-}
-
 // var range = function(x, y, resultArr = []) {
-//   // base case
-//   // stop when x is one away from y. 
-//   if (x + 1 === y || x - 1 === y || x === y) {
-//     return [];
-//   } else if (x < y) {
-//     return [x + 1].concat(range(x + 1, y));
-//   } else if (x > y) {
-//     return [x - 1].concat(range(x - 1, y));
+//   // base case: when do we want to stop
+//   // if x is equal to y and x is equal to y - 1 or + 1 then return the array
+//   if (x === y || x === y - 1 || x === y + 1) {
+//     return resultArr;
+//     // if x is equal to y and x is 
+//   } 
+//   // recursion case: call the function and push the value of x into the array adding one to x.
+//   // run the loop if x > y 
+//   if (x > y) {
+//     // push x into the array subtracting one
+//     resultArr.push(x - 1);
+//     // return the range function with the arguements subtacting one from x, y and the array.
+//     return range(x - 1, y, resultArr);
+//   } else {
+//     // if y is larger than x then we are going to add x plus one to the array.
+//     resultArr.push(x + 1);  
+//     // returning the range function calling x + 1, y and the array.
+//     return range(x + 1, y, resultArr);
 //   }
 // }
 
+var range = function(x, y) {
+  // base case
+  // when x equals y - 1
+  if (x === y - 1 || x === y + 1 || x === y) {
+    return [];
+  }
+  
+  // recusive case
+  // add one to x each time and return y
+  if (x < y) {
+    return [x + 1].concat(range(x + 1, y));
+  } 
+  return [x - 1].concat(range(x - 1, y));
+};
+ 
 console.log('range', range(1, 5));
 
 
@@ -764,6 +767,10 @@ console.log(numToText('I have 0 hotdogs'));
 // *** EXTRA CREDIT ***
 
 // 36. Return the number of times a tag occurs in the DOM.
+
+/**
+ * I: tag, node
+ */
 var tagCount = function(tag, node) {
 };
 
@@ -771,7 +778,22 @@ var tagCount = function(tag, node) {
 // Sample array:  [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 // console.log(binarySearch(5)) will return '5'
 
+/**
+ * should return the index 
+ */
+
 var binarySearch = function(array, target, min, max) {
+  let indexCount = 0;
+  // base case
+  // when the target equals the array element
+  if (target === array[0]) {
+    return indexCount;
+  }
+  
+  // recursion case
+  // keep the array target and the inedex count
+  console.log(indexCount);
+  return binarySearch(array.slice(1), target, indexCount++)
 };
 
 // 38. Write a merge sort function.

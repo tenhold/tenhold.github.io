@@ -359,15 +359,15 @@ _.filter = function(array, func) {
 */
 
 
-_.reject = function(array, func) {
-    let rejectVal = [];
-    for (let i = 0; i < array.length; i++) {
-        if (!func(array[i], i, array)) {
-            rejectVal.push(array[i]);
-        }
-    }
-    return rejectVal;
-}
+// _.reject = function(array, func) {
+//     let rejectVal = [];
+//     for (let i = 0; i < array.length; i++) {
+//         if (!func(array[i], i, array)) {
+//             rejectVal.push(array[i]);
+//         }
+//     }
+//     return rejectVal;
+// }
 
 _.reject = function(array, func) {
     // return the filter function with parameters of the array and an anonymous function with the parameters element, index, and array
