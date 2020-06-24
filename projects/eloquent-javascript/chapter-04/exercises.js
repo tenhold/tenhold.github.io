@@ -601,37 +601,25 @@ function deepEqual(val1, val2) {
     return true;
   // check to see if both values are an array
   } else if (Array.isArray(val1) && Array.isArray(val2)) {
-    val1.every(value => val2.includes(value));
+    for (let i = 0; i < val1.length; i++) {
+      if (typeof val1[i] === typeof val2[i]) {
+        return deepEqual(val1[i], val2[i]);
+      }
+      return false;
+    }
   // check to see if they are both 'objects'
-  } else if (typeof val1 === 'object' && typeof val2 === 'object') {
+  } else if (typeof val1 === 'object' && typeof val2 === 'object' && val1 !== null && val2 !== null) {
     // create a variable to store all the keys of the object in an array
     let val1Keys = Object.keys(val1);
     // create a variable to store all the keys of the object in an array
     let val2Keys = Object.keys(val2);
-    // create a variable to store all the values of the obects in an array
-    let val1Vals = Object.values(val1);
-    // create a variable to store all the values of the obects in an array
-    let val2Vals = Object.values(val2);
-    // compare all the values of the keys
-    // base case when val1 and val2 length is 0
-    if (val1Keys.length !== val2Keys.length || val1Keys !== val2Keys) {
-      return false;
-    } else if (!val1Keys.length && !val2Keys) {
-      return true;
+    for (let i = 0; i < val1Keys.length; i++) {
+      if (val1Keys[i] === val1Keys[i] && typeof val1[val1Keys[i]] === typeof val2[val2Keys[i]]) {
+        return deepEqual(val1[val1Keys[i]], val2[val2Keys[i]]);
+      } 
     }
-    // recursion case
-    // if val1 and val2 index is an array loop thought that array
-    if (Array.isArray(val1Vals[0]) && Array.isArray(val1Vals[0])) {
-      let val1Arr = val1Vals[0];
-      let val2Arr = val2Vals[0];
-      for (let i = 0; i < val1Arr.length && i < val2Arr.length; i++) {
-        if (val1Arr[i] !== val2Arr[i]) {
-          return false;
-        }
-      }
-      return deepEqual(val1.slice(1), val2.slice(1));
+    return false;
     }
-  }
   return false;
 };
 
