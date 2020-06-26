@@ -15,7 +15,7 @@ function triangles(num) {
   }
 };
 
-triangles(7)
+// triangles(7)
 
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
@@ -46,7 +46,7 @@ function fizzBuzz(startNum, endNum) {
   }
 }
 
-fizzBuzz(1, 15);
+// fizzBuzz(1, 15);
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -57,50 +57,32 @@ fizzBuzz(1, 15);
  * O: a checkerboard of a # that is the number squared with the # everyother character
  */
  
-// function drawChessboard(num) {
-//   // create a loop
-// let line = '';
-//   for (let i = 0; i <= num; i++) {
-//     for (let j = 0; j <= num; j++) {
-//       if ((i + j) % 2 === 0) {
-//         line += ' ';
-//       } else {
-//         line += '#';
-//       }
-//     }
-//     line += '\n';
-//   }
-//   return line;
-// }
-
-
 function drawChessboard(num) {
-  // declare a variable to an empty string
+  // declare an empty string this is what our checkerboard will become
   let line = '';
-  // use a for loop to start at 0 and end at num for each line
+  // use a for loop to create 'rows'
   for (let i = 0; i < num; i++) {
-    // use another for loop for each character in the line. each time j is equal to the number in the first loop this will allow us to 
-    // have each starting number in the line either odd or even. j is less than number plus i. this will allow us to always have the 
-    // same number of characters in each line
-    for(let j = i; j < (num + i); j++) {
-      // if the number is even then we will add the # to the line
-      if (j % 2 === 0) {
-        line += '#';
-       // if odd then add a space to the line.
-      } else {
+    // use a nested for loop to print our rows
+    for (let j = 0; j < num; j++) {
+      // every other space we will either print a space or a hash
+      if ((i + j) % 2 === 0) {
         line += ' ';
+      } else {
+        line += '#';
       }
     }
-    // after each line we will break it and create a new line.
+    // after the row has printed then move to the next row.
     line += '\n';
   }
-  // log the line to the console.
-  console.log(line);
+  // print the checkerboard to the console.
+   console.log(line);
 }
 
 
 
 console.log(drawChessboard(8));
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////

@@ -130,10 +130,15 @@ function every(array, func) {
  */
 
 function dominantDirection(text) {
+  // split the text into an array
   const textArr = text.split(' ');
+  // loop over the array and find the character code that matches the first index of the word
   const textCodeArr = textArr.map(word =>  word.charCodeAt(0))
-  return textCodeArr.map(code => {
+  // loop over the character codes
+  const scriptFind = textCodeArr.map(code => {
+    // each loop compare the code to the array of scripts
     for (let key of SCRIPTS) {
+      // if the code is found in the range then we will return the direction of the writing
       if (key.ranges.some(([from, to]) => {
         return code >= from && code < to;
       })) {
@@ -141,33 +146,30 @@ function dominantDirection(text) {
       }
     }
     return null;
-  }).reduce((count, curCode) => {
-    if (curCode !== count) {
-      return curCode;
+  })
+  // useing reduce to count each writing direction adding it to an object
+  .reduce((count, code) => {
+    if (!count[code]) {
+      // if the direction isn't in the object then add it and set the count to one
+      count[code] = 1;
+    } else  {
+      // if the direction is found then add one to the count
+      count[code]++;
     }
     return count;
-  });
-  
-  
-  
-  
-  
-  // .reduce((count, code) => {
-  //   if (!count[code]) {
-  //     count[code] = 1;
-  //   } else  {
-  //     count[code]++;
-  //   }
-  //   return count;
-  // }, [])
-  
-  
-  // let scriptArr = [];
-  // for (let key in scriptFind) {
-  //   scriptArr.push(scriptFind);
-  // }
-  
-  // console.log('code test', scriptFind);
+  }, {});
+  // create an array to store the directions and count
+  const scriptFindArr = [];
+  // loop over the object and push a sub array of directions and count into the array literal
+  for (let key in scriptFind) {
+    scriptFindArr.push([key, scriptFind[key]]);
+  }
+  // using sort to get the top script direction to the first element
+  scriptFindArr.sort(function(a, b) {
+    return b[1] - a[1];
+  })
+  // return only the first element in the first sub array witch will be the direction
+  return scriptFindArr[0][0];
 }
 
 console.log(dominantDirection('يسي','fdッs', 'hello', 'hi', 'what', 'up'))

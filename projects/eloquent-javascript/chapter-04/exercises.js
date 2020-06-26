@@ -503,57 +503,56 @@ console.log(nth([1,2,3], 2));
 /**
  * I: two values
  * O: a boolean value
+ * 
 */
 
-// function deepEqual(val1, val2) {
-//   // base case when rest is null
-//   if (val1 === null && val2 === null) {
-//     return true;
-//   // check to see if both values are an array
-//   } else if (Array.isArray(val1) && Array.isArray(val2)) {
-//     return val1.every(value => {
-//       return val2.includes(value);
-//     })
-//   // check to see if the values are both the same
-//   } else if (val1 === val2) {
-//     return true;
-//   // check to see if they are both 'objects'
-//   } else if (typeof val1 === 'object' && typeof val2 === 'object') {
-//     const val1Keys = Object.keys(val1);
-//     const val2Keys = Object.keys(val2);
-//     const keyCheck = val1Keys.every(function(value) {
-//       return val2Keys.includes(value);
-//     })
-//     console.log(keyCheck);
-//   }
-//   return false;
-// };
+
 
 
 // function deepEqual(val1, val2) {
-//   // base case when rest is null
-//   if (val1 === null && val2 === null) {
+//   if (val1 === val2) {
 //     return true;
-//   // check to see if both values are an array
-//   } else if (Array.isArray(val1) && Array.isArray(val2)) {
-//     return val1.every(value => {
-//       return val2.includes(value);
-//     })
-//   // check to see if the values are both the same
-//   } else if (val1 === val2) {
-//     return true;
-//   // check to see if they are both 'objects'
-//   } else if (typeof val1 === 'object' && typeof val2 === 'object') {
-//     const val1List = listToArray(val1);
-//     const val2List = listToArray(val2);
-//     return val1List.every(value => {
-//       return val2List.includes(value);
-//     })
-//   }
-//   return false;
-// };
+//   } else if ()
+// }
 
-// console.log(deepEqual)
+
+
+function deepEqual(val1, val2) {
+  // check to see if either value is null and if both are return true
+  // check to see if the values are both the same
+  if (val1 === val2) {
+    return true;
+  }
+  else if (typeof val1 !== 'object'  && typeof val2 !== 'object' && val1 !== val2) {
+    return false;
+  } else if (!val1 && !val2) {
+    if (val1 !== val2) {
+      return false;
+    }
+  // check to see if both values are an array
+  } else if (Array.isArray(val1) && Array.isArray(val2)) {
+    for (let i = 0; i < val1.length; i++) {
+      if (typeof val1[i] === typeof val2[i]) {
+        return deepEqual(val1[i], val2[i]);
+      }
+      return false;
+    } 
+  // check to see if they are both 'objects'
+  } else if (typeof val1 === 'object' && typeof val2 === 'object' && val1 !== null && val2 !== null) {
+    // create a variable to store all the keys of the object in an array
+    let val1Keys = Object.keys(val1);
+    // create a variable to store all the keys of the object in an array
+    let val2Keys = Object.keys(val2);
+    for (let i = 0; i < val1Keys.length; i++) {
+      if (val1Keys[i] === val1Keys[i] && typeof val1[val1Keys[i]] === typeof val2[val2Keys[i]]) {
+        return deepEqual(val1[val1Keys[i]], val2[val2Keys[i]]);
+      }
+      return false;
+    }
+    }
+  return true;
+};
+
 
 // function deepEqual(val1, val2) {
 //   // check to see if either value is null and if both are return true
@@ -593,37 +592,6 @@ console.log(nth([1,2,3], 2));
 //   }
 //   return false;
 // };
-
-function deepEqual(val1, val2) {
-  // check to see if either value is null and if both are return true
-  // check to see if the values are both the same
-  if (val1 === null && val2 === null || val1 === val2) {
-    return true;
-  // check to see if both values are an array
-  } else if (Array.isArray(val1) && Array.isArray(val2)) {
-    for (let i = 0; i < val1.length; i++) {
-      if (typeof val1[i] === typeof val2[i]) {
-        return deepEqual(val1[i], val2[i]);
-      }
-      return false;
-    }
-  // check to see if they are both 'objects'
-  } else if (typeof val1 === 'object' && typeof val2 === 'object' && val1 !== null && val2 !== null) {
-    // create a variable to store all the keys of the object in an array
-    let val1Keys = Object.keys(val1);
-    // create a variable to store all the keys of the object in an array
-    let val2Keys = Object.keys(val2);
-    for (let i = 0; i < val1Keys.length; i++) {
-      if (val1Keys[i] === val1Keys[i] && typeof val1[val1Keys[i]] === typeof val2[val2Keys[i]]) {
-        return deepEqual(val1[val1Keys[i]], val2[val2Keys[i]]);
-      } 
-    }
-    return false;
-    }
-  return false;
-};
-
-
 
 
 ////////////////////////////////////////////////////////////////////////////////

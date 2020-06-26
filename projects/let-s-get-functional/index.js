@@ -281,6 +281,7 @@ var topThreeTags = function(array) {
        // return an array with the key and value
         return [tags, amount];
     });
+    
     // sort the array basied on the number
     const sortedTag = tagSorted.sort(function(a, b) {
         return b[1] - a[1];
@@ -294,7 +295,7 @@ var topThreeTags = function(array) {
     return top3;
 };
 
-// console.log(topThreeTags(customers));
+console.log(topThreeTags(customers));
 
 
 /**
